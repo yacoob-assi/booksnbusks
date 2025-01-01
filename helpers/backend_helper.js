@@ -1,5 +1,5 @@
-import {del, get, post} from "./api_helper"
-import {data} from "autoprefixer";
+import { del, get, post } from "./api_helper"
+import { data } from "autoprefixer";
 
 export const postRegister = data => post('/user/register', data)
 export const postLogin = data => post('/user/login', data)

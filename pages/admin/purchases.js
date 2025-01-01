@@ -12,7 +12,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import AdminLayout from "../../layouts/admin";
 
 const Purchases = () => {
-  const [purchases, getPurchases, { loading }] = useFetch(
+  const [purchases, get, { loading }] = useFetch(
     fetchPurchases,
     { size: 8 },
     false

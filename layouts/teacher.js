@@ -1,8 +1,8 @@
-import {useEffect, useRef, useState} from "react";
-import {fetchProfile, fetchUnreadNotifications, postNotificationRead} from "../helpers/backend_helper";
-import {checkPermission, signOut, useFetch, userOutSideClick} from "../helpers/hooks";
-import {UserContext, useUserContext} from "../contexts/user";
-import {useRouter} from "next/router";
+import { useEffect, useRef, useState } from "react";
+import { fetchProfile, fetchUnreadNotifications, postNotificationRead } from "../helpers/backend_helper";
+import { checkPermission, signOut, useFetch, userOutSideClick } from "../helpers/hooks";
+import { UserContext, useUserContext } from "../contexts/user";
+import { useRouter } from "next/router";
 import {
     FiArrowLeft,
     FiBarChart2, FiBell,
@@ -14,9 +14,9 @@ import {
     FiUser,
     FiX
 } from "react-icons/fi";
-import {NavItem} from "./student";
-import {AiOutlineAppstoreAdd, AiOutlineQuestionCircle, AiOutlineShop} from "react-icons/ai";
-import {BsCalendarCheck} from "react-icons/bs";
+import { NavItem } from "./student";
+import { AiOutlineAppstoreAdd, AiOutlineQuestionCircle, AiOutlineShop } from "react-icons/ai";
+import { BsCalendarCheck } from "react-icons/bs";
 import Link from "next/link";
 import Sidebar from "../fragment/layout/nav/Sidebar";
 import { MdOutlineDashboard } from "react-icons/md";
@@ -24,7 +24,7 @@ import { FiArchive, FiUsers } from "react-icons/fi";
 import { AiOutlineShoppingCart, AiOutlineStar } from "react-icons/ai";
 import { IoSchoolOutline, IoBookOutline } from "react-icons/io5";
 import { TbTrophy } from "react-icons/tb";
-const TeacherLayout = ({children, back = true}) => {
+const TeacherLayout = ({ children, back = true }) => {
     const router = useRouter()
     const [user, setUser] = useState()
     const [openSidebar, setOpenSidebar] = useState(false);
@@ -34,7 +34,7 @@ const TeacherLayout = ({children, back = true}) => {
     }, [])
 
     const getProfile = () => {
-        fetchProfile().then(({error, data}) => {
+        fetchProfile().then(({ error, data }) => {
             if (error === false) {
                 setUser(data)
             } else {
@@ -59,22 +59,21 @@ const TeacherLayout = ({children, back = true}) => {
     const sidebarItems = [
         { "title": "Dashboard", "link": "/teacher", "icon": <MdOutlineDashboard size={iconSize} /> },
         { "title": "Inventory", "link": "/teacher/inventory", "icon": <FiArchive size={iconSize} /> },
-        { "title": "Purchases", "link": "teacher/purchases", "icon": <AiOutlineShoppingCart size={iconSize} /> },
-        { "title": "Faculty Roster", "link": "teacher/roster", "icon": <FiUsers size={iconSize} /> },
+        { "title": "Purchases", "link": "/teacher/purchases", "icon": <AiOutlineShoppingCart size={iconSize} /> },
+        { "title": "Faculty Roster", "link": "/teacher/roster", "icon": <FiUsers size={iconSize} /> },
         { "title": "Student Roster", "link": "/teacher/students", "icon": <IoSchoolOutline size={iconSize} /> },
         { "title": "Virtues", "link": "/teacher/traits", "icon": <AiOutlineStar size={iconSize} /> },
         { "title": "Award", "link": "/teacher/award", "icon": <TbTrophy size={iconSize} /> },
         { "title": "Classes", "link": "/teacher/classes", "icon": <IoBookOutline size={iconSize} /> },
     ];
-    
+
     return (
-        <UserContext.Provider value={{...user, getProfile}}>
-            <Sidebar setOpenSidebar={setOpenSidebar} openSidebar={openSidebar} user={user} sidebarItems={sidebarItems}/>
-                <div className={`mb-10 mt-24 mr-3 overflow-x-hidden flex-1 transition-all ${
-                    openSidebar ? 'ml-[18rem]' : 'ml-0'
-                    } sm:ml-[18rem]`}>
-                    {children}
-                </div>
+        <UserContext.Provider value={{ ...user, getProfile }}>
+            <Sidebar setOpenSidebar={setOpenSidebar} openSidebar={openSidebar} user={user} sidebarItems={sidebarItems} />
+            <div className={`mb-10 mt-24 mr-3 overflow-x-hidden flex-1 transition-all ${openSidebar ? 'ml-[18rem]' : 'ml-0'
+                } sm:ml-[18rem]`}>
+                {children}
+            </div>
 
             {/*}
             <main className="dashboard-layout">
@@ -145,13 +144,13 @@ const TeacherLayout = ({children, back = true}) => {
 }
 export default TeacherLayout
 
-export const NavItemProfile = ({user}) => {
+export const NavItemProfile = ({ user }) => {
     return (
-        <div className="p-3 rounded-xl absolute" style={{bottom: 24, left: 24, right: 24, background: '#f3f4f6'}}>
+        <div className="p-3 rounded-xl absolute" style={{ bottom: 24, left: 24, right: 24, background: '#f3f4f6' }}>
             <div className="flex items-center">
                 <div className="bg-primary overflow-hidden flex justify-center items-center mr-3"
-                     style={{height: 40, width: 40, borderRadius: 40}}>
-                    <FiUser size={18} className="text-white"/>
+                    style={{ height: 40, width: 40, borderRadius: 40 }}>
+                    <FiUser size={18} className="text-white" />
                 </div>
                 <div>
                     <p className="font-semibold text-base mb-0 oswald">{user?.first_name || ''} {user?.last_name || ''}</p>
@@ -162,7 +161,7 @@ export const NavItemProfile = ({user}) => {
     )
 }
 
-export const Header = ({user}) => {
+export const Header = ({ user }) => {
     const notification = checkPermission('notification', true)
     return (
         <header className="bg-white mb-4 px-6 py-3 flex justify-between rounded">
@@ -171,9 +170,9 @@ export const Header = ({user}) => {
             </div>
             <div className="flex items-center">
                 {notification && (
-                    <Notifications/>
+                    <Notifications />
                 )}
-                <img src={user?.school?.logo} alt="" className="h-8 mr-3"/>
+                <img src={user?.school?.logo} alt="" className="h-8 mr-3" />
                 <p className="mb-0 text-gray-600 font-semibold">{user?.school?.name}</p>
             </div>
         </header>
@@ -190,7 +189,7 @@ const Notifications = () => {
         setShow(false)
     })
     const router = useRouter()
-    const [notifications, getNotification] = useFetch(fetchUnreadNotifications, {size: notificationButtonCount}, false)
+    const [notifications, getNotification] = useFetch(fetchUnreadNotifications, { size: notificationButtonCount }, false)
 
     useEffect(() => {
         getNotification()
@@ -202,18 +201,18 @@ const Notifications = () => {
             <div className="flex items-center mx-1 relative" role={"button"} onClick={() => setShow(!show)}>
                 {!!notifications?.totalDocs && <span
                     className="bg-red-500 absolute w-5 h-5 -top-2.5 -right-2.5 rounded-full p-0.5 text-center text-white"
-                    style={{fontSize: 10}}>{notifications.totalDocs}</span>}
-                <FiBell size={22}/>
+                    style={{ fontSize: 10 }}>{notifications.totalDocs}</span>}
+                <FiBell size={22} />
             </div>
             <div
                 className={`${show ? 'absolute' : 'hidden'}  right-0 mt-2 max-w-lg bg-white rounded shadow-xl border z-20`}>
                 <h4 className="px-2 py-1 text-base border-b mb-2">Notifications</h4>
-                <div className="relative w-100 " style={{minWidth: 300}}>
+                <div className="relative w-100 " style={{ minWidth: 300 }}>
                     {!!notifications?.totalDocs ? (
                         <ul className="p-0">
                             {notifications?.docs?.map((d, index) => (
                                 <li className="text-gray-500 px-3 pb-1 mb-2 border-b" role="button" onClick={() => {
-                                    postNotificationRead({_id: d._id}).then(() => {
+                                    postNotificationRead({ _id: d._id }).then(() => {
                                         router.push('/teacher/students/')
                                     })
                                     setShow(false)
@@ -229,7 +228,7 @@ const Notifications = () => {
                     )}
                     <Link href="/teacher/notifications">
                         <a onClick={() => setShow(false)}
-                           className=" block text-gray-500 text-center text-black rounded-b p-2 pt-1 border">View
+                            className=" block text-gray-500 text-center text-black rounded-b p-2 pt-1 border">View
                             All</a>
                     </Link>
                 </div>
