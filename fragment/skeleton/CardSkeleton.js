@@ -1,37 +1,41 @@
-import { CardSkeleton } from "../../skeleton/CardSkeleton";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
 
-const Card=({items, loading})=>{
-    
+const CardSkeleton = () => {
+    const skeletonStructure = [
+        [{},{}],
+        [{},{}, {}],
+    ];
+
     return (
-        <div className="flex flex-col gap-4">
-            {loading ? ( 
-                <CardSkeleton  /> ) : (
-                items.map((row, index) => (
-                <div className={`transition-opacity duration-1000 opacity-100 flex flex-wrap gap-4 ease-in`} key={index}>
+        <div className="flex flex-col gap-4 transition-all duration-500">
+                {skeletonStructure.map((row, index) => (
+                <div className="flex flex-wrap gap-4" key={index}>
                     {row.map((item, index) => (
                         <div className={`rounded-sm border border-stroke bg-white p-6 shadow-md dark:border-strokedark dark:bg-boxdark ${item.style || "flex-1"}`} key={index}>
                         <div className="flex flex-row items-center gap-4">
                             <div className="bg-slate-300 rounded-full p-3 w-fit">
-                                {item.icon}
+                                <Skeleton circle={true} height={22} width={25}/>
                             </div>
                             <div>
                                 <h4 className="text-title-md font-bold text-black dark:text-white">
-                                    {item.title}
+                                    <Skeleton width={150} height={20}/>                                    
                                 </h4>
-                                <span className="text-sm font-medium">{item.subtitle}</span>
+                                <span className="text-sm font-medium">
+                                    <Skeleton width={60} height={10}/>
+                                </span>
                             </div>
                         </div>
                         
                             <div className="mt-4 flex flex-col gap-2 h-60 max-h-60 overflow-y-auto">
-                                {item.body(item.value)}
+                                <Skeleton count={5}/>
                             </div>
                         </div>
                     ))}
                 </div>
-            ))
-        )}
+            ))}
         </div>
-    )
+    );
 }
 
-export default Card;
+export {CardSkeleton};

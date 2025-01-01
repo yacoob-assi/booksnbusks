@@ -34,7 +34,7 @@ const swalAlert = {
 export default swalAlert
 
 export const swalLoading = () => {
-    Swal.fire({
+    /*Swal.fire({
         title: "",
         html: `
          <div id="preloader" style="display: flex;">
@@ -61,5 +61,5 @@ export const swalLoading = () => {
         allowEnterKey: false,
         showConfirmButton: false,
         background: "none"
-    })
+    })*/
 }

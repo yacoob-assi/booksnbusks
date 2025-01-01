@@ -4,19 +4,9 @@ import {checkPermission, signOut, useFetch, userOutSideClick} from "../helpers/h
 import {UserContext, useUserContext} from "../contexts/user";
 import {useRouter} from "next/router";
 import {
-    FiArrowLeft,
-    FiBarChart2, FiBell,
-    FiCalendar,
-    FiGift,
-    FiLogOut, FiSettings,
-    FiShoppingBag, FiShoppingCart,
-    FiTag,
+    FiBell,
     FiUser,
-    FiX
 } from "react-icons/fi";
-import {NavItem} from "./student";
-import {AiOutlineAppstoreAdd, AiOutlineQuestionCircle, AiOutlineShop} from "react-icons/ai";
-import {BsCalendarCheck} from "react-icons/bs";
 import Link from "next/link";
 import Sidebar from "../fragment/layout/nav/Sidebar";
 import { MdOutlineDashboard } from "react-icons/md";
@@ -70,7 +60,7 @@ const TeacherLayout = ({children, back = true}) => {
     return (
         <UserContext.Provider value={{...user, getProfile}}>
             <Sidebar setOpenSidebar={setOpenSidebar} openSidebar={openSidebar} user={user} sidebarItems={sidebarItems}/>
-                <div className={`mb-10 mt-24 mr-3 overflow-x-hidden flex-1 transition-all ${
+                <div className={`pb-10 mt-24 mr-3 overflow-x-hidden flex-1 transition-all ${
                     openSidebar ? 'ml-[18rem]' : 'ml-0'
                     } sm:ml-[18rem]`}>
                     {children}

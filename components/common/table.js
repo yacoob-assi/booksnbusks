@@ -18,38 +18,32 @@ const Table = ({columns, data, onEdit, onDelete, action, getData, pagination = f
     }
 
     return (
-        <>
+        <div className="bg-white p-3 border shadow-md">
             {!!loading ? (
                 <div className="flex justify-center items-center h-96">
                     <Loading/>
                 </div>
             ) : (
-                <div className="table-responsive mt-4">
-                    <table className="table">
-                        <thead>
+                <div className="">
+                    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             {columns?.map((column, index) => (
-                                <th key={index} className={column.className}
-                                    style={{background: column?.shadow ? '#F8F8F8' : '#FFF'}}>{column.label}</th>
+                                <th key={index} className="px-6 py-3">{column.label}</th>
                             ))}
                             {noAction || <th className="text-center">{actionLabel}</th>}
                         </tr>
                         </thead>
                         <tbody>
                         {(pagination ? data?.docs : data)?.map((data, index) => (
-                            <tr key={index}>
+                            <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700" key={index}>
                                 {columns?.map((column, index) => {
                                     if (column.formatter) {
-                                        return <td key={index} className={column.className}
+                                        return <td key={index} className="px-6 py-3"
                                                    onClick={() => {
                                                        if(column.onClick) {
                                                            column.onClick(data)
                                                        }
-                                                   }}
-                                                   style={{
-                                                       background: column?.shadow ? '#F8F8F8' : undefined,
-                                                       maxWidth: column?.maxWidth,
-                                                       minWidth: column?.minWidth
                                                    }}>{column.formatter(data[column.dataIndex], data)}</td>
                                     }
                                     if (column.type === 'image') {
@@ -65,20 +59,16 @@ const Table = ({columns, data, onEdit, onDelete, action, getData, pagination = f
                                                    }}><img
                                             style={{height: 36}} src={data[column.dataIndex]} alt=""/></td>
                                     }
-                                    return <td className={column.className}
+                                    return <td className="px-6 py-3"
                                                onClick={() => {
                                                    if(column.onClick) {
                                                        column.onClick(data)
                                                    }
                                                }}
-                                               style={{
-                                                   background: column?.shadow ? '#F8F8F8' : undefined,
-                                                   maxWidth: column?.maxWidth
-                                               }}
                                                key={index}>{data[column.dataIndex]}</td>
                                 })}
                                 {noAction || (
-                                    <td style={{minWidth: 150}}>
+                                    <td >
                                         <div className="flex justify-end pr-2">
                                             {onEdit && checkPermission(permission + '_edit') && (
                                                 <a className="btn-primary p-1.5 rounded ml-2" onClick={() => onEdit(data)}>
@@ -108,7 +98,7 @@ const Table = ({columns, data, onEdit, onDelete, action, getData, pagination = f
                     )}
                 </div>
             )}
-        </>
+        </div>
     )
 }
 export default Table

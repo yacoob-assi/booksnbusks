@@ -7,9 +7,9 @@ import swal from "sweetalert2";
 const ModalForm = ({title, visible, setVisible, size = '' , form, addFunc, updateFunc, onFinish, children}) => {
     const update = form.getFieldValue('_id') !== undefined
     const handleSubmit = async values => {
-        swalLoading()
+        //swalLoading()
         values.restaurant_id = localStorage.getItem('currentRestaurant')
-        swal.close()
+        //swal.close()
         const {error, msg} = update && updateFunc !== undefined ?
             await updateFunc(values) :
             await addFunc(values)

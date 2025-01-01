@@ -44,11 +44,11 @@ export const useFetch = (func, query = {}, load = true) => {
 }
 
 export const useAction = async (func, data, reload, alert = true, loading = true) => {
-    if (loading) {
-        swalLoading()
-    }
+    //if (loading) {
+    //    swalLoading()
+    //}
+    //swal.close()
     const {error, msg} = await func(data)
-    swal.close()
     if (error === false) {
         if (reload) {
             reload()
@@ -64,9 +64,9 @@ export const useAction = async (func, data, reload, alert = true, loading = true
 export const useActionConfirm = async (func, data, reload, message, confirmText) => {
     const {isConfirmed} = await swalAlert.confirm(message, confirmText)
     if (isConfirmed) {
-        swalLoading()
+        //swalLoading()
         const {error, msg} = await func(data)
-        swal.close()
+        //swal.close()
         if (error === false) {
             if (reload) {
                 reload()
