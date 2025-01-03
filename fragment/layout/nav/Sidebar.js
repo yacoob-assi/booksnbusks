@@ -2,8 +2,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaShoppingBag } from "react-icons/fa";
 import ProfileNav from "./Profile";
+import { useRouter } from "next/router";
+import { FiLogOut } from "react-icons/fi";
+import { signOut } from "../../../helpers/hooks";
 
 const Sidebar = ({setOpenSidebar, openSidebar, user, sidebarItems}) => {
+    const router = useRouter()
+    
     const [selectedIndex, setSelectedIndex] = useState(0);
     return (
     <>
@@ -65,7 +70,12 @@ const Sidebar = ({setOpenSidebar, openSidebar, user, sidebarItems}) => {
                         </li>
                     
                     ))}
- 
+
+                    <div className="flex mx-4 border-t">
+                        <button className="pt-3 pl-2" onClick={() => signOut(router)}>
+                            <FiLogOut className="inline-block ml-4 mr-3"/> Logout
+                        </button>
+                    </div>
                 </ul>
             </div>
         </aside>

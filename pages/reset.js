@@ -25,14 +25,17 @@ const Signup = () => {
 
     return (
         <AuthLayout>
-            <div className="flex items-center pt-12" style={{minHeight: '60vh'}}>
-                <div className="bg-white p-8 rounded shadow-sm w-104">
-                    <h2 className="text-primary font-medium mb-3">Reset Password</h2>
-                    <Form layout="vertical" onFinish={handleSignup}>
-                        <PasswordInput name="password" placeholder="Password"/>
-                        <PasswordInput name="confirm_password" placeholder="Confirm Password" confirm/>
-                        <button className="btn btn-primary mt-1">Reset</button>
-                    </Form>
+
+            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
+                <div className="w-full bg-white rounded-lg shadow sm:max-w-lg xl:p-0 mt-10">
+                    <div className="space-y-3 md:space-y-6 pb-6 pt-6 px-4">
+                        <h2 className="text-primary font-medium mb-3">Reset Password</h2>
+                        <Form layout="vertical" onFinish={handleSignup}>
+                            <PasswordInput name="password" placeholder="Password"/>
+                            <PasswordInput name="confirm_password" placeholder="Confirm Password" confirm/>
+                            <button className="btn btn-primary mt-1">Reset</button>
+                        </Form>
+                    </div>
                 </div>
             </div>
         </AuthLayout>

@@ -49,8 +49,8 @@ const TeacherLayout = ({children, back = true}) => {
     const sidebarItems = [
         { "title": "Dashboard", "link": "/teacher", "icon": <MdOutlineDashboard size={iconSize} /> },
         { "title": "Inventory", "link": "/teacher/inventory", "icon": <FiArchive size={iconSize} /> },
-        { "title": "Purchases", "link": "teacher/purchases", "icon": <AiOutlineShoppingCart size={iconSize} /> },
-        { "title": "Faculty Roster", "link": "teacher/roster", "icon": <FiUsers size={iconSize} /> },
+        { "title": "Purchases", "link": "/teacher/purchases", "icon": <AiOutlineShoppingCart size={iconSize} /> },
+        { "title": "Faculty Roster", "link": "/teacher/roster", "icon": <FiUsers size={iconSize} /> },
         { "title": "Student Roster", "link": "/teacher/students", "icon": <IoSchoolOutline size={iconSize} /> },
         { "title": "Virtues", "link": "/teacher/traits", "icon": <AiOutlineStar size={iconSize} /> },
         { "title": "Award", "link": "/teacher/award", "icon": <TbTrophy size={iconSize} /> },
