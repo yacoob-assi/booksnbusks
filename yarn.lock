@@ -2472,6 +2472,11 @@ react-list@^0.8.13:
   dependencies:
     prop-types "15"
 
+react-loading-skeleton@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/react-loading-skeleton/-/react-loading-skeleton-3.5.0.tgz#da2090355b4dedcad5c53cb3f0ed364e3a76d6ca"
+  integrity sha512-gxxSyLbrEAdXTKgfbpBEFZCO/P153DnqSCQau2+o6lNy1jgMRr2MmRmOzMmyrwSaSYLRB8g7b0waYPmUjz7IhQ==
+
 react-paginate@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/react-paginate/-/react-paginate-8.1.0.tgz#8c4c6c5b7d90e8a4f33653262204fd32c5dfd207"

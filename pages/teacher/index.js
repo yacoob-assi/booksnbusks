@@ -7,10 +7,9 @@ import moment from "moment";
 import {useRouter} from "next/router";
 import {Tabs} from "antd";
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { swalLoading } from "../../components/common/alert";
-import swal from "sweetalert2";
 import Card from "../../fragment/layout/dashboard/Card";
 import { FaFolderPlus, FaShoppingCart, FaBox, FaUserTimes, FaClipboardList, FaFolderOpen, FaRegClipboard, FaUserFriends, FaBoxOpen, FaDatabase } from "react-icons/fa"; // Import required icons
+import Skeleton from "react-loading-skeleton";
 
 const { TabPane } = Tabs;
 
@@ -162,11 +161,6 @@ const Home = () => {
             </>
         ),
     ]
-    if(loading) {
-        swalLoading()
-    } else {
-        swal.close()
-    }
 
     const items = [
         [
@@ -198,7 +192,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <Card items={items} />
+            <Card items={items} loading={loading} />
             {/* <Row>}
                         <Row style={{ paddingBottom: '20px' }}>
                 <Col>

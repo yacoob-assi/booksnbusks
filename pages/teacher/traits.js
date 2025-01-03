@@ -1,7 +1,7 @@
 import TeacherLayout from "../../layouts/teacher";
 import ModalForm from "../../components/common/modal_form";
 import {Form} from "antd";
-import {useState} from "react";
+import {useMemo, useState} from "react";
 import FormInput from "../../components/form/FormInput";
 import {delTrait, fetchTraits, postTraitAdd, postTraitUpdate} from "../../helpers/backend_helper";
 import Table from "../../components/common/table";
@@ -38,6 +38,11 @@ const Virtues = () => {
 
     const [search, setSearch] = useState('')
 
+    const data=useMemo(()=>traits?.filter(d => 
+        d?.name?.toLowerCase().includes(search.toLowerCase())).sort((a, b) =>
+            a.name?.toLowerCase().localeCompare(b.name?.toLowerCase())
+    ), [traits, search]);
+
     return (
         <>
             <ModalForm
@@ -56,8 +61,7 @@ const Virtues = () => {
                 <FormInput name="points" label="Points" type="number" required/>
             </ModalForm>
             <div className="flex justify-between">
-                <h4 className="page-title"><FiArrowLeft className="mr-2 inline-block" role="button"
-                                                        onClick={() => router.back()}/> Virtues</h4>
+                 <h4 className="page-title"> Virtues</h4>
                 <div className="flex">
                     <SearchInput value={search} setValue={setSearch}/>
                     {add && (
@@ -71,10 +75,11 @@ const Virtues = () => {
 
             </div>
             <Table
-                data={traits?.filter(d => d?.name?.toLowerCase().includes(search.toLowerCase())).sort((a, b) => a.name?.toLowerCase().localeCompare(b.name?.toLowerCase()))}
+                data={data}
                 getData={getTraits}
                 columns={columns}
                 permission="virtue"
+                actionLabel="Actions"
                 action={(
                     <Button onClick={() => {
                         form.resetFields()
