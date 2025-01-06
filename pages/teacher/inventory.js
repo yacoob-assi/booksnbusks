@@ -16,7 +16,7 @@ const Inventory = () => {
     const [form] = Form.useForm()
     const [visible, setVisible] = useState(false)
     const [search, setSearch] = useState('')
-    const [products, getProducts] = useFetch(fetchProducts, {size: 6}, false)
+    const [products, getProducts, {loading}] = useFetch(fetchProducts, {size: 6}, false)
 
     useEffect(() => {
         getProducts({search: search || undefined})
@@ -24,13 +24,13 @@ const Inventory = () => {
 
 
     const router = useRouter()
-    useEffect(() => {
+    /*useEffect(() => {
         if(router?.query?.product && products) {
             let product = products?.docs?.find(d => d._id === router?.query?.product)
            handleEdit(product)
             window.history.pushState(null, null, '/teacher/inventory')
         }
-    }, [router?.query, products])
+    }, [router?.query, products])*/
 
     const handleEdit = values => {
         form.resetFields()
@@ -80,24 +80,25 @@ const Inventory = () => {
                 <FormInput name="stock" label="Stock" type="number" required/>
                 <InputFile name="image" label="Image" form={form}/>
             </ModalForm>
-            <div className="flex justify-between">
-                <h4 className="page-title"> <FiArrowLeft className="mr-2 inline-block" role="button" onClick={() => router.back()}/> Inventory</h4>
-                <div className="flex">
-                    <SearchInput value={search} setValue={setSearch}/>
-                    {add && (
-                        <Button onClick={() => {
-                            form.resetFields()
-                            setVisible(true)
-                        }}>Add Item
-                        </Button>
-                    )}
-                </div>
-
+            <div className="flex justify-between items-center mb-2 sm:flex-row flex-col gap-4">
+                {add && (
+                    <Button
+                        onClick={() => {
+                            form.resetFields();
+                            setVisible(true);
+                        }}
+                    >
+                        Add Item
+                    </Button>
+                )}
+                <SearchInput value={search} setValue={setSearch} />
             </div>
+
             <Table
                 data={products}
                 getData={getProducts}
                 columns={columns}
+                loading={loading}
                 action={(
                     <Button onClick={() => {
                         form.resetFields()
@@ -110,6 +111,7 @@ const Inventory = () => {
                 actionLabel={<span className="text-primary">Edit/Delete</span>}
                 permission="inventory"
                 pagination
+                rowCount={6}
             />
         </>
     )

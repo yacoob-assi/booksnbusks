@@ -8,11 +8,11 @@ import {useRouter} from "next/router";
 import AuthLayout from "../layouts/auth";
 import Link from 'next/link'
 import ThiredPartySignIn from "../fragment/ThiredParty";
-import { UpperBackground } from "../fragment/background/BackgroundTheme";
 
 const Login = () => {
     const router = useRouter()
     const handleLogin = async values => {
+        console.log(values)
         swalLoading()
         const {error, description, token} = await postLogin(values)
         swal.close()
@@ -26,6 +26,7 @@ const Login = () => {
         }
     }
 
+    console.log("Login Page")
     return (
         <AuthLayout>
             <section className="">
@@ -34,7 +35,7 @@ const Login = () => {
                     <div className="w-full bg-white rounded-lg shadow sm:max-w-lg xl:p-0 mt-10">
                         <div className="space-y-3 md:space-y-6 pb-6 pt-6 px-4">
 
-                            <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl flex items-center overflow-auto">
+                            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl flex items-center overflow-auto">
                                 <img className="w-10 h-10 mr-2" src="/images/logo.png" alt="BooksNBucks Logo"/>
                                 Sign in to <span className="text-primary">&nbsp;BooksNBucks</span>     
                             </h1>
@@ -65,10 +66,10 @@ const Login = () => {
 
 
                                 {/* or */}
-                                <div class="flex items-center mt-1 mb-3 justify-center">
-                                    <div class="flex-1 h-0.5 bg-gray-300"></div>
-                                    <p class="mx-3 text-sm font-medium text-gray-500 text-center">OR</p>
-                                    <div class="flex-1 h-0.5 bg-gray-300"></div>
+                                <div className="flex items-center mt-1 mb-3 justify-center">
+                                    <div className="flex-1 h-0.5 bg-gray-300"></div>
+                                    <p className="mx-3 text-sm font-medium text-gray-500 text-center">OR</p>
+                                    <div className="flex-1 h-0.5 bg-gray-300"></div>
                                 </div>
 
 
@@ -87,14 +88,14 @@ const Login = () => {
                                     </Link>
                                 </div>
                                 {/* submit button */}
-                                <div class="pt-3">
-                                    <button type="submit" class="w-full text-white btn-primary rounded-lg text-sm px-5 py-[0.85rem] text-center transition duration-150">Sign in</button>
+                                <div className="pt-3">
+                                    <button type="submit" className="w-full text-white btn-primary rounded-lg text-sm px-5 py-[0.85rem] text-center transition duration-150">Sign in</button>
                                 </div>
 
-                                <p class="text-sm font-light text-gray-500 pt-4">
+                                <p className="text-sm font-light text-gray-500 pt-4">
                                     Don’t have an account yet?&nbsp;
                                     <Link href="/signup">
-                                        <a class="font-medium text-primary hover:underline">Sign up</a>
+                                        <a className="font-medium text-primary hover:underline">Sign up</a>
                                     </Link>
                                 </p>
                             </Form>

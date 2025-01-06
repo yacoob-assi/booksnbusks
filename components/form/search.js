@@ -1,14 +1,37 @@
-import {FiDelete, FiSearch} from "react-icons/fi";
-
-const SearchInput = ({value, setValue}) => {
+const SearchInput = ({ value, setValue }) => {
     return (
-        <div className="w-56 mr-4 relative">
-            <FiSearch className="absolute top-2.5 left-2 text-gray-500"/>
-            <input className="form-control" value={value} onChange={e => !!setValue &&  setValue(e.target.value)}
-                   style={{paddingLeft: 30, paddingRight: 30}} placeholder="Search"/>
-            {!!value && <FiDelete className="absolute right-2 top-3 text-gray-500" role="button"
-                                   onClick={() => !!setValue && setValue('')}/>}
+        <div className="relative w-full max-w-sm">
+            <div
+                className="absolute top-0 left-0 p-2.5 text-sm font-medium h-full text-white bg-primary-primary rounded-l-lg border border-primary-50"
+            >
+                <svg
+                    className="w-4 h-4"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 20"
+                >
+                    <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                    />
+                </svg>
+                <span className="sr-only">Search</span>
+            </div>
+            <input
+                type="search"
+                id="search-dropdown"
+                className="block p-2.5 pl-10 w-full text-gray-900 bg-gray-50 border border-pink-700 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-800 focus:border-primary-800"
+                placeholder="Search..."
+                value={value}
+                onChange={(e) => !!setValue && setValue(e.target.value)}
+                required
+            />
         </div>
-    )
-}
+    );
+};
+
 export default SearchInput

@@ -1,0 +1,15 @@
+[33m750087a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m HEAD@{0}: checkout: moving from d0bcd3f859b52b789dc4a98c29ee1009e67f78f6 to master
+[33md0bcd3f[m HEAD@{1}: commit: new updates like chart
+[33m3bcaeba[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{2}: checkout: moving from master to 3bcaeba
+[33m750087a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m HEAD@{3}: commit: fdf
+[33m671d463[m HEAD@{4}: reset: moving to 671d4633616d93963f39a7ac33ed48e3915b92fd
+[33mac10110[m HEAD@{5}: reset: moving to ac1011027cd4ef1e2315f5ac31756901c40afe15
+[33mac10110[m HEAD@{6}: reset: moving to ac1011027cd4ef1e2315f5ac31756901c40afe15
+[33mbc9317e[m HEAD@{7}: checkout: moving from 693f0d79593cb94064a18356c1362b0a93e45ad8 to master
+[33m693f0d7[m HEAD@{8}: commit: my version
+[33m3bcaeba[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{9}: checkout: moving from master to 3bcaeba700792ad88d737ab96e5a55fb2c88c2a6
+[33mbc9317e[m HEAD@{10}: commit: clean tabke
+[33mac10110[m HEAD@{11}: commit (merge): my version
+[33m671d463[m HEAD@{12}: commit (merge): my version
+[33m78d8042[m HEAD@{13}: commit: add emtpy class
+[33m47733dc[m HEAD@{14}: clone: from https://github.com/Ammar-theScorpion/booksnbusks

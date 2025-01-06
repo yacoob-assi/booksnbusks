@@ -185,7 +185,7 @@ const Home = () => {
                 <div className="inline-flex items-center rounded-md bg-stone-200 p-1.5 dark:bg-meta-4 gap-1 transition-all duration-300">
                     {filters.map((filter, index)=>(
                         <button key={index} onClick={()=>handleStartTime(filter.value)} className={`rounded py-1 px-3 text-xs font-medium text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark transition-all duration-300
-                                                    ${startTime === filter.value && 'bg-white'}  `}>
+                            ${startTime === filter.value && 'bg-white'}  `}>
                             {filter.title}
                         </button>
                     ))}

@@ -28,9 +28,9 @@ const Signup = () => {
     return (
         <AuthLayout>
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 mt-20">
-                <div class="w-full bg-white rounded-lg shadow sm:max-w-lg xl:p-0">
-                    <div class="space-y-3 md:space-y-4 sm:p-8 pb-4 pt-6 px-6">
-                            <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl flex items-center">
+                <div className="w-full bg-white rounded-lg shadow sm:max-w-lg xl:p-0">
+                    <div className="space-y-3 md:space-y-4 sm:p-8 pb-4 pt-6 px-6">
+                            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl flex items-center">
                                 <img className="w-10 h-10 mr-2" src="/images/logo.png" alt="BooksNBucks Logo"/>
                                 Create your Account   
                             </h1>
@@ -39,10 +39,10 @@ const Signup = () => {
                             <ThiredPartySignIn description={"Sign Up with Google"}/>
 
                             {/* or */}
-                            <div classNames="flex items-center mt-2 mb-1 justify-center">
-                                    <div class="flex-1 h-0.5 bg-gray-300"></div>
-                                    <p class="mx-3 text-sm font-medium text-gray-500 text-center">OR</p>
-                                    <div class="flex-1 h-0.5 bg-gray-300"></div>
+                            <div className="flex items-center mt-2 mb-1 justify-center">
+                                    <div className="flex-1 h-0.5 bg-gray-300"></div>
+                                    <p className="mx-3 text-sm font-medium text-gray-500 text-center">OR</p>
+                                    <div className="flex-1 h-0.5 bg-gray-300"></div>
                             </div>
 
                             <Form layout="vertical" onFinish={handleSignup}>
@@ -65,13 +65,13 @@ const Signup = () => {
                                 </div>
                                 
 
-                                <div class="pt-3">
-                                    <button type="submit" class="w-full text-white btn-primary rounded-lg text-sm px-5 py-[0.85rem] text-center transition duration-150">Register</button>
+                                <div className="pt-3">
+                                    <button type="submit" className="w-full text-white btn-primary rounded-lg text-sm px-5 py-[0.85rem] text-center transition duration-150">Register</button>
                                 </div>
-                                <p class="text-sm font-light text-gray-500 pt-4">
+                                <p className="text-sm font-light text-gray-500 pt-4">
                                     Already have an account?&nbsp;
                                     <Link href="/login">
-                                        <a class="font-medium text-primary hover:underline">Login Here</a>
+                                        <a className="font-medium text-primary hover:underline">Login Here</a>
                                     </Link>
                                 </p>
                             </Form>

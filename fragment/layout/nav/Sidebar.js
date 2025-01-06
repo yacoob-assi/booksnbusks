@@ -3,8 +3,31 @@ import { useState } from "react";
 import { FaShoppingBag } from "react-icons/fa";
 import ProfileNav from "./Profile";
 
-const Sidebar = ({ setOpenSidebar, openSidebar, user, sidebarItems }) => {
+import { FiLogOut } from "react-icons/fi";
+import { signOut } from "../../../helpers/hooks";
+import { useUserContext } from "../../../contexts/user";
+import { NavItem } from "../../../layouts/student";
+import LogoutPopup from "./logoutPopup";
+
+
+const Sidebar = ({ setOpenSidebar, openSidebar, user, sidebarItems, admin = false }) => {
+
+
+
+    // const user = useUserContext()
+    const userContext = useUserContext()
     const [selectedIndex, setSelectedIndex] = useState(0);
+    const [showLogout, setShowLogout] = useState(false)
+    const setIndex = (index) => {
+        console.log("index", index)
+        setSelectedIndex(index)
+    }
+
+    const toggleogout = (show) => {
+        setShowLogout(show)
+    }
+
+
     return (
         <>
             <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -44,33 +67,46 @@ const Sidebar = ({ setOpenSidebar, openSidebar, user, sidebarItems }) => {
                     </div>
                 </div>
             </nav>
+
             <aside id="logo-sidebar"
                 className={`fixed top-0 left-0 z-40 w-64 h-screen pt-24 transition-transform ${openSidebar ? 'translate-x-0' : '-translate-x-full'} bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700`}
                 aria-label="Sidebar">
                 <div className="h-full pr-6 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
                     <ul className="space-y-2 font-medium">
-                        {sidebarItems?.map((item, index) => (
-                            <li key={index}>
+                        {sidebarItems?.map((item, index) => {
 
-                                <a
-                                    className={`flex items-center p-2  text-dark rounded-lg no-underline hover:bg-primary-800 dark:hover:bg-primary-100 transition-all duration-300 hover:text-white ${selectedIndex === index && 'bg-primary-primary text-white'
-                                        } `}
-                                    onClick={() => {
-                                        setSelectedIndex(index)
-                                        item.link
-                                    }}
-                                >
-                                    {item.icon}
-                                    <span className="ms-3">{item.title}</span>
-                                </a>
+                            // <li key={index}>
+                            //     <Link href={item.link}>
+                            //         <a
+                            //             className={`flex items-center p-2  text-dark rounded-lg no-underline hover:bg-primary-800 dark:hover:bg-primary-100 transition-all duration-300 hover:text-white ${selectedIndex === index && 'bg-primary-primary text-white'
+                            //                 } `}
+                            //             onClick={() => setSelectedIndex(index)}
+                            //         >
+                            //             {item.icon}
+                            //             <span className="ms-3">{item.title}</span>
+                            //         </a>
+                            //     </Link>
+                            // </li>
+                            return <NavItem itemIndex={index} href={item.link} label={item.title} permission={item.permission}
+                                icon={item.icon} setIndex={setIndex} selectedIndex={selectedIndex} childHrefs={item.childHrefs} />
+                        }
+                            // NavItem = ({href, label, icon: Icon, onClick, childHrefs, permission, admin = false}) => {
+                            // <NavItem href="/teacher/award" label="Award" permission="award_show" icon={FiGift}/>
 
-                            </li>
 
-                        ))}
+                        )}
 
+                        <div className="flex mx-4 border-t">
+                            <button className="pt-3 pl-2" onClick={() => toggleogout(true)}>
+                                <FiLogOut className="inline-block ml-4 mr-3" /> Logout
+                            </button>
+                        </div>
                     </ul>
                 </div>
             </aside>
+
+            <LogoutPopup showLogout={showLogout} toggleogout={toggleogout} />
+
 
         </>
 
